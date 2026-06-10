@@ -7,7 +7,7 @@ body {
     width: 100%;
     height: 100vh;
 
-    /* create 2x4 grid layout */
+    /* create 3x4 grid layout */
     display: grid;
     /* create 2 rows, each will take 50% of the width */
     grid-template-rows: repeat(3, 1fr);
@@ -18,23 +18,45 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
+/* TABLET VIEW */
 @media (max-width: 1023px) {
     .container {
+        height: auto;
+        min-height: 100vh;
+
         grid-template-rows: repeat(6, 1fr);
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* 
+    can also write like this ->
+    .container .card-container:nth-child(even)
+     */
+    .container .card-container:nth-child(2n) {
+        border-right: none;
+    }
 }
 
+/* MOBILE VIEW */
 @media (max-width: 599px) {
     .container {
+        height: auto;
+        min-height: 100vh;
+
         grid-template-rows: repeat(12, 1fr);
         grid-template-columns: 1fr;
     }
 
     .container .card-container {
         border-bottom: 1px solid #000000;
+        border-right: none;
+        padding: 15px 0;
     }
 
+    .container .card-container .btn-hover {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
 }
 
 .container .card-container {
@@ -162,7 +184,7 @@ button::before {
 }
 
 #hover-effect-8:hover::before {
-    transform: translateY(0);
+    transform: rotate(0);
 }
 
 #hover-effect-9::before {
